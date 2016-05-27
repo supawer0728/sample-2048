@@ -4,7 +4,7 @@ public class StringUtils {
 	
 	static boolean equals(String str1, String str2) {
 		
-		// hello java
+		// hello world
 		if (str1 == null) {
 			return str2 == null;
 		}

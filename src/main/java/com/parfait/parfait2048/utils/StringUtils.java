@@ -14,5 +14,9 @@ public class StringUtils {
 		
 		return str1.equals(str2);
 	}
+	
+	static boolean isNumeric(String str) {
+		return org.apache.commons.lang3.StringUtils.isNumeric(str);
+	}
 
 }

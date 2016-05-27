@@ -1,5 +1,10 @@
 package com.parfait.parfait2048.model;
 
+/**
+ * 
+ * @author JHJeon
+ *
+ */
 public class Point {
 
 	private int x;

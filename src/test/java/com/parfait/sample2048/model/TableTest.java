@@ -1,4 +1,4 @@
-package com.parfait.parfait2048.model;
+package com.parfait.sample2048.model;
 
 import org.junit.Test;
 

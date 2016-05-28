@@ -1,8 +1,8 @@
-package com.parfait.parfait2048.model;
+package com.parfait.sample2048.model;
 
 import org.junit.Test;
 
-import com.parfait.parfait2048.exception.BlockException;
+import com.parfait.sample2048.exception.BlockException;
 
 import static org.junit.Assert.*;
 

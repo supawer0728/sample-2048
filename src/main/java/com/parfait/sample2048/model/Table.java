@@ -1,16 +1,12 @@
-package com.parfait.parfait2048.model;
+package com.parfait.sample2048.model;
 
+import lombok.Data;
+
+@Data
 public class Table {
 
 	public static final int SIZE = 4;
 	private Block[][] blocks = new Block[SIZE][SIZE];
-	
-	public Block[][] getBlocks() {
-		return blocks;
-	}
-	public void setBlocks(Block[][] blocks) {
-		this.blocks = blocks;
-	}
 	
 	public Block createBlockToEmptySpace() {
 		
@@ -22,10 +18,12 @@ public class Table {
 	}
 	
 	private Point getEmptyPointInTable() {
+
+		int randomFactor = 100;
 	
 		while(true) {
-			int row = ((int)(Math.random() * 100)) % SIZE;
-			int col = ((int)(Math.random() * 100)) % SIZE;
+			int row = ((int)(Math.random() * randomFactor)) % SIZE;
+			int col = ((int)(Math.random() * randomFactor)) % SIZE;
 			
 			if (blocks[row][col] == null) {
 				return new Point(col, row);

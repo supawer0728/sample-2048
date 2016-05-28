@@ -1,4 +1,4 @@
-package com.parfait.parfait2048.exception;
+package com.parfait.sample2048.exception;
 
 public class BlockException extends RuntimeException {
 

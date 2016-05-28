@@ -6,6 +6,11 @@ import com.parfait.parfait2048.exception.BlockException;
 
 import static org.junit.Assert.*;
 
+/**
+ * 
+ * @author JHJeon
+ *
+ */
 public class BlockTest {
 
 	@Test

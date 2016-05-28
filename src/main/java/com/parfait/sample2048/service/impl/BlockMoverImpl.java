@@ -13,6 +13,7 @@ public class BlockMoverImpl implements BlockMover {
 		switch (direction) {
 			case UP:
 			case DOWN:
+				moveBlocksVertically(blocks, direction);
 				break;
 			case LEFT:
 			case RIGHT:
@@ -21,6 +22,64 @@ public class BlockMoverImpl implements BlockMover {
 			default :
 				throw new IllegalArgumentException(direction.name() + " is not valid argument");
 		}
+	}
+
+	private void moveBlocksVertically(Block[][] blocks, Direction direction) {
+		boolean isUp = (direction == Direction.UP);
+
+		int start = isUp ? 0 : Table.SIZE - 1;
+		int end = isUp ? Table.SIZE : -1;
+		int interval = isUp ? 1 : -1;
+
+		for (int columnIndex = 0; columnIndex < Table.SIZE; columnIndex++) {
+
+			moveBlocksVerticallyInAColumn(blocks, columnIndex, start, end, interval);
+		}
+	}
+
+	private void moveBlocksVerticallyInAColumn(Block[][] blocks, int columnIndex, int start, int end, int interval) {
+
+		for (int rowIndex = start; rowIndex != end; rowIndex += interval) {
+			Integer emptyBlockRowIndex = findEmptyBlockIndexInAColumn(blocks, columnIndex, start, end, interval);
+			if (emptyBlockRowIndex == null) {
+				return;
+			}
+
+			Integer valuableBlockRowIndex = findValuableBlockIndexInAColumn(blocks, columnIndex, start + interval, end, interval);
+			if (valuableBlockRowIndex == null) {
+				return;
+			}
+
+			swapBlocksInAColumn(blocks, columnIndex, emptyBlockRowIndex, valuableBlockRowIndex);
+		}
+	}
+
+	private Integer findEmptyBlockIndexInAColumn(Block[][] blocks, int columnIndex, int start, int end, int interval) {
+
+		for (int rowIndex = start; rowIndex != end; rowIndex += interval) {
+			if (blocks[rowIndex][columnIndex] == null) {
+				return rowIndex;
+			}
+		}
+
+		return null;
+	}
+
+	private Integer findValuableBlockIndexInAColumn(Block[][] blocks, int columnIndex, int start, int end, int interval) {
+
+		for (int rowIndex = start; rowIndex != end; rowIndex += interval) {
+			if (blocks[rowIndex][columnIndex] != null) {
+				return rowIndex;
+			}
+		}
+
+		return null;
+	}
+
+	private void swapBlocksInAColumn(Block[][] blocks, int columnIndex, Integer rowIndex1, Integer rowIndex2) {
+		Block tempBlock = blocks[rowIndex1][columnIndex];
+		blocks[rowIndex1][columnIndex] = blocks[rowIndex2][columnIndex];
+		blocks[rowIndex2][columnIndex] = tempBlock;
 	}
 
 	private void moveBlocksHorizontally(Block[][] blocks, Direction direction) {
@@ -36,31 +95,31 @@ public class BlockMoverImpl implements BlockMover {
 		}
 	}
 
-	private void moveBlocksHorizontallyInARow(Block[] block, int start, int end, int interval) {
+	private void moveBlocksHorizontallyInARow(Block[] blocks, int start, int end, int interval) {
 
-		for (int i = start; i != end; i += interval) {
+		for (int columnIndex = start; columnIndex != end; columnIndex += interval) {
 
-			Integer emptyBlockIndex = findEmptyBlockIndexInARow(block, i, end, interval);
+			Integer emptyBlockColumnIndex = findEmptyBlockIndexInARow(blocks, columnIndex, end, interval);
 
-			if (emptyBlockIndex == null) {
+			if (emptyBlockColumnIndex == null) {
 				return;
 			}
 
-			Integer valuableBlockIndex = findValuableBlockIndexInARow(block, i + interval, end, interval);
+			Integer valuableBlockColumnIndex = findValuableBlockIndexInARow(blocks, columnIndex + interval, end, interval);
 
-			if (valuableBlockIndex == null) {
+			if (valuableBlockColumnIndex == null) {
 				return;
 			}
 
-			swapBlocksInARow(block, emptyBlockIndex, valuableBlockIndex);
+			swapBlocksInARow(blocks, emptyBlockColumnIndex, valuableBlockColumnIndex);
 		}
 	}
 
 	private Integer findEmptyBlockIndexInARow(Block[] blocks, int start, int end, int interval) {
 
-		for (int i = start; i != end; i += interval) {
-			if (blocks[i] == null) {
-				return i;
+		for (int columnIndex = start; columnIndex != end; columnIndex += interval) {
+			if (blocks[columnIndex] == null) {
+				return columnIndex;
 			}
 		}
 
@@ -69,20 +128,20 @@ public class BlockMoverImpl implements BlockMover {
 
 	private Integer findValuableBlockIndexInARow(Block[] blocks, int start, int end, int interval) {
 
-		for (int i = start; i != end; i += interval) {
+		for (int columnIndex = start; columnIndex != end; columnIndex += interval) {
 
-			if (blocks[i] != null) {
-				return i;
+			if (blocks[columnIndex] != null) {
+				return columnIndex;
 			}
 		}
 
 		return null;
 	}
 
-	private void swapBlocksInARow(Block[] blocks, Integer blockIndex1, Integer blockIndex2) {
+	private void swapBlocksInARow(Block[] blocks, Integer columnIndex1, Integer columnIndex2) {
 
-		Block tempBlock = blocks[blockIndex1];
-		blocks[blockIndex1] = blocks[blockIndex2];
-		blocks[blockIndex2] = tempBlock;
+		Block tempBlock = blocks[columnIndex1];
+		blocks[columnIndex1] = blocks[columnIndex2];
+		blocks[columnIndex2] = tempBlock;
 	}
 }

@@ -8,6 +8,11 @@ public class Block {
 
 	private int value;
 
+	public Block() {};
+	public Block(int value) {
+		this.value = value;
+	}
+
 	public void setValue(int value) {
 
 		if (value < 0) {

@@ -1,11 +1,21 @@
 package com.parfait.sample2048.model;
 
+import com.parfait.sample2048.exception.BlockException;
 import lombok.Data;
 
 @Data
 public class Block {
 
 	private int value;
+
+	public void setValue(int value) {
+
+		if (value < 0) {
+			throw new BlockException("value must be positive");
+		}
+
+		this.value = value;
+	}
 
 	public static Block getInstanceWithRandomValue(int... values) {
 
@@ -25,6 +35,6 @@ public class Block {
 		
 		return block;
 	}
-	
-	
+
+
 }

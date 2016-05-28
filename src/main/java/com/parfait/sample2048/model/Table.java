@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class Table {
 
+	public static final String NULL_BLOCK_EXPRESSION = "*";
 	public static final int SIZE = 4;
 	private Block[][] blocks = new Block[SIZE][SIZE];
 	
@@ -38,7 +39,7 @@ public class Table {
 		
 		for(int i=0; i<SIZE; i++) {
 			for (int j=0; j<SIZE; j++) {
-				sb.append(blocks[i][j] == null ? "*" : blocks[i][j].getValue());
+				sb.append(blocks[i][j] == null ? NULL_BLOCK_EXPRESSION : blocks[i][j].getValue());
 				sb.append(" ");
 			}
 			sb.append("\n");

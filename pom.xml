@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.parfait</groupId>
-  <artifactId>parfait-2048</artifactId>
+  <artifactId>sample-2048</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>parfait-2048</name>
+  <name>sample-2048</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

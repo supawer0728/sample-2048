@@ -75,10 +75,10 @@ public class BlockMergerImpl implements BlockMerger {
 
 		switch(direction) {
 			case UP :
-				targetRowIndex++;
+				targetRowIndex--;
 				break;
 			case DOWN :
-				targetRowIndex--;
+				targetRowIndex++;
 				break;
 			case RIGHT :
 				targetColumnIndex++;

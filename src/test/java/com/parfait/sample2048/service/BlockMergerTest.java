@@ -46,4 +46,40 @@ public class BlockMergerTest {
 
 		return blocks;
 	}
+
+	@Test
+	public void testMergeUp() throws Exception {
+
+		Block[][] blocks = createTestBlocksForMergeVertically();
+
+		BlockMerger blockMerger = new BlockMergerImpl();
+		int score = blockMerger.mergeBlocksIfAbleToMergeAndReturnScore(blocks, Direction.UP);
+
+		assertNull(blocks[1][0]);
+		assertEquals(4, blocks[0][0].getValue());
+		assertEquals(4, score);
+	}
+
+	@Test
+	public void testMergeDown() throws Exception {
+
+		Block[][] blocks = createTestBlocksForMergeVertically();
+
+		BlockMerger blockMerger = new BlockMergerImpl();
+		int score = blockMerger.mergeBlocksIfAbleToMergeAndReturnScore(blocks, Direction.DOWN);
+
+		assertNull(blocks[0][0]);
+		assertEquals(4, blocks[1][0].getValue());
+		assertEquals(4, score);
+	}
+
+	private Block[][] createTestBlocksForMergeVertically() {
+
+		Block[][] blocks = new Block[Table.SIZE][Table.SIZE];
+
+		blocks[0][0] = new Block(2);
+		blocks[1][0] = new Block(2);
+
+		return blocks;
+	}
 }

@@ -14,27 +14,23 @@ public class Table {
 	
 	public Block createBlockToEmptySpace() {
 		
-		int row;
-		int col;
+		Point emptyPoint = getEmptyPointInTable();
+		Block block = Block.getInstanceWithRandomValue(2, 4);
+		blocks[emptyPoint.getY()][emptyPoint.getX()] = block;
 		
+		return block;	
+	}
+	
+	private Point getEmptyPointInTable() {
+	
 		while(true) {
-			row = ((int)(Math.random() * 100)) % SIZE;
-			col = ((int)(Math.random() * 100)) % SIZE;
+			int row = ((int)(Math.random() * 100)) % SIZE;
+			int col = ((int)(Math.random() * 100)) % SIZE;
 			
 			if (blocks[row][col] == null) {
-				break;
+				return new Point(col, row);
 			}
 		}
-		
-		int factor = ((int)(Math.random() * 10)) % 2;
-		int value = (factor == 0 ? 2 : 4);
-		
-		Block block = new Block();
-		block.setValue(value);
-		blocks[row][col] = block;
-		
-		return block;
-		
 	}
 	
 	@Override

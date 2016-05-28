@@ -76,6 +76,19 @@ public class BlockMoverTest {
 		}
 	}
 
+	@Test
+	public void testMoveDown() throws Exception {
+
+		Block[][] blocks = createRandomBlock2DArraysForVerticalMovement();
+
+		BlockMover blockMover = new BlockMoverImpl();
+		blockMover.moveBlocks(blocks, Direction.DOWN);
+
+		for (int i = 0; i < Table.SIZE; i++) {
+			assertNotNull(blocks[Table.SIZE - 1][i]);
+		}
+	}
+
 	/**
 	 *
 	 * 각 열당 random번째 행에 블록을 생성

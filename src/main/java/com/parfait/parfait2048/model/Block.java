@@ -1,5 +1,7 @@
 package com.parfait.parfait2048.model;
 
+import com.parfait.parfait2048.exception.BlockException;
+
 public class Block {
 
 	private int value;
@@ -8,7 +10,11 @@ public class Block {
 		return value;
 	}
 
-	public void setValue(int value) {
+	public void setValue(int value) throws BlockException {
+		
+		if (value < 0) {
+			throw new BlockException("value can't be less than 0");
+		}
 		this.value = value;
 	}
 

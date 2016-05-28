@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class TableTest {
 
@@ -46,6 +47,12 @@ public class TableTest {
 
 		table.setBlocks(blocks);
 
+		System.out.println(table);
 		assertFalse(table.isContinuable());
+
+		table.getBlocks()[0][1].setValue(2);
+
+		System.out.println(table);
+		assertTrue(table.isContinuable());
 	}
 }

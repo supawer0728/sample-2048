@@ -12,6 +12,31 @@ public class Table {
 		this.blocks = blocks;
 	}
 	
+	public Block createBlockToEmptySpace() {
+		
+		int row;
+		int col;
+		
+		while(true) {
+			row = ((int)(Math.random() * 100)) % SIZE;
+			col = ((int)(Math.random() * 100)) % SIZE;
+			
+			if (blocks[row][col] == null) {
+				break;
+			}
+		}
+		
+		int factor = ((int)(Math.random() * 10)) % 2;
+		int value = (factor == 0 ? 2 : 4);
+		
+		Block block = new Block();
+		block.setValue(value);
+		blocks[row][col] = block;
+		
+		return block;
+		
+	}
+	
 	@Override
 	public String toString() {
 		

@@ -7,6 +7,10 @@ public class TableTest {
 	@Test
 	public void testToString() {
 		
-		System.out.println(new Table().toString());
+		Table table = new Table();
+		table.createBlockToEmptySpace();
+		table.createBlockToEmptySpace();
+		
+		System.out.println(table.toString());
 	}
 }

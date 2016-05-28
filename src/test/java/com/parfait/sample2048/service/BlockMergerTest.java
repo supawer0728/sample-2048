@@ -24,6 +24,19 @@ public class BlockMergerTest {
 		assertEquals(4, score);
 	}
 
+	@Test
+	public void testMergeLeft() throws Exception {
+
+		Block[][] blocks = createTestBlocksForMergeHorizontally();
+
+		BlockMerger blockMerger = new BlockMergerImpl();
+		int score = blockMerger.mergeBlocksIfAbleToMergeAndReturnScore(blocks, Direction.LEFT);
+
+		assertNull(blocks[0][1]);
+		assertEquals(4, blocks[0][0].getValue());
+		assertEquals(4, score);
+	}
+
 	private Block[][] createTestBlocksForMergeHorizontally() {
 
 		Block[][] blocks = new Block[Table.SIZE][Table.SIZE];

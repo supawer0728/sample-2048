@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class TableTest {
 
@@ -28,5 +29,23 @@ public class TableTest {
 		}
 
 		assertEquals(createBlockRepeatCount, sumOfPositiveValues);
+	}
+
+	@Test
+	public void testIsContinuable() throws Exception {
+
+		Table table = new Table();
+
+		Block[][] blocks = new Block[Table.SIZE][Table.SIZE];
+		for (int rowIndex = 0; rowIndex < Table.SIZE; rowIndex++) {
+			for (int columnIndex = 0; columnIndex < Table.SIZE; columnIndex++) {
+
+				blocks[rowIndex][columnIndex] = new Block((rowIndex + columnIndex ) % 2 == 0 ? 2 : 4);
+			}
+		}
+
+		table.setBlocks(blocks);
+
+		assertFalse(table.isContinuable());
 	}
 }

@@ -9,12 +9,12 @@ public enum Direction {
 		this.code = code;
 	}
 
-	public Direction getByCode(String code) {
+	public static Direction getByCode(String code) {
 
 		Direction[] directions = Direction.values();
 
 		for (Direction direction : directions) {
-			if (direction.code.equals(code)) {
+			if (direction.code.equalsIgnoreCase(code)) {
 				return direction;
 			}
 		}

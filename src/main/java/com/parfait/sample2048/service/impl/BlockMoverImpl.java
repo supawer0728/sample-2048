@@ -45,7 +45,7 @@ public class BlockMoverImpl implements BlockMover {
 				return;
 			}
 
-			Integer valuableBlockRowIndex = findValuableBlockIndexInAColumn(blocks, columnIndex, start + interval, end, interval);
+			Integer valuableBlockRowIndex = findValuableBlockIndexInAColumn(blocks, columnIndex, emptyBlockRowIndex + interval, end, interval);
 			if (valuableBlockRowIndex == null) {
 				return;
 			}
@@ -105,7 +105,7 @@ public class BlockMoverImpl implements BlockMover {
 				return;
 			}
 
-			Integer valuableBlockColumnIndex = findValuableBlockIndexInARow(blocks, columnIndex + interval, end, interval);
+			Integer valuableBlockColumnIndex = findValuableBlockIndexInARow(blocks, emptyBlockColumnIndex + interval, end, interval);
 
 			if (valuableBlockColumnIndex == null) {
 				return;

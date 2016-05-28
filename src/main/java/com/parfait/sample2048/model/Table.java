@@ -3,14 +3,23 @@ package com.parfait.sample2048.model;
 import com.parfait.sample2048.model.enums.Direction;
 import com.parfait.sample2048.service.BlockMerger;
 import com.parfait.sample2048.service.impl.BlockMergerImpl;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
 public class Table {
 
 	public static final String NULL_BLOCK_EXPRESSION = "*";
 	public static final int SIZE = 4;
+
+	private int score = 0;
+
+	@Getter @Setter
 	private Block[][] blocks = new Block[SIZE][SIZE];
+
+	public void addScore(int score) {
+		this.score += score;
+	}
 
 	public Block createBlockToEmptySpace() {
 

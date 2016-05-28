@@ -2,6 +2,8 @@ package com.parfait.parfait2048.model;
 
 import org.junit.Test;
 
+import com.parfait.parfait2048.exception.BlockException;
+
 import static org.junit.Assert.*;
 
 public class BlockTest {
@@ -33,5 +35,14 @@ public class BlockTest {
 		block3.setValue(1);
 		
 		assertFalse(block1.equals(block3));
+	}
+	
+	@Test(expected = BlockException.class)
+	public void testSetNegativeValue() {
+		
+		int value2 = -1;
+		
+		Block block = new Block();
+		block.setValue(value2);
 	}
 }

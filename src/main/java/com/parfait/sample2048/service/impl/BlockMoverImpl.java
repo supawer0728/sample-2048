@@ -20,7 +20,7 @@ public class BlockMoverImpl implements BlockMover {
 				moveBlocksHorizontally(blocks, direction);
 				break;
 			default :
-				throw new IllegalArgumentException(direction.name() + " is not valid argument");
+				throw new IllegalArgumentException(direction.name() + " is not valid direction");
 		}
 	}
 

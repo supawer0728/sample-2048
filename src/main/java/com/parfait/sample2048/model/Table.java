@@ -12,6 +12,7 @@ public class Table {
 	public static final String NULL_BLOCK_EXPRESSION = "*";
 	public static final int SIZE = 4;
 
+	@Getter
 	private int score = 0;
 
 	@Getter @Setter
